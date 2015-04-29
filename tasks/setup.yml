@@ -1,0 +1,25 @@
+---
+- name: Counting number of releases
+  shell: echo `ls -1dt {{ ajgarlag_rollback_path }}/releases/* | wc -l`
+  register: ajgarlag_rollback_versions
+  changed_when: no
+
+- name: Check if there is more than one release
+  fail:
+    msg: "Could not rollback because no previous release was detected"
+  when: ajgarlag_rollback_versions.stdout|int <= 1
+
+- name: Registering current version
+  shell: echo `ls -1dt {{ ajgarlag_rollback_path }}/releases/* | head -n 1`
+  register: ajgarlag_rollback_version_current_check
+  changed_when: no
+
+- name: Registering previous version
+  shell: echo `ls -1dt {{ ajgarlag_rollback_path }}/releases/* | head -n 2 | tail -n 1`
+  register: ajgarlag_rollback_version_previous_check
+  changed_when: no
+
+- name: Setting up rollback variables
+  set_fact:
+    ajgarlag_rollback_version_current: "{{ ajgarlag_rollback_version_current_check.stdout }}"
+    ajgarlag_rollback_version_previous: "{{ ajgarlag_rollback_version_previous_check.stdout }}"

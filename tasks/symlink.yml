@@ -1,0 +1,10 @@
+---
+- name: Symlinking previous release
+  file:
+    src: "{{ ajgarlag_rollback_version_previous }}"
+    dest: "{{ ajgarlag_rollback_path }}/current"
+    state: link
+  when: ajgarlag_rollback_version_previous is defined
+
+- debug:
+    msg: Rollback complete

@@ -1,0 +1,6 @@
+---
+- name: Cleaning up previous release
+  file:
+    path: "{{ ajgarlag_rollback_version_current }}"
+    state: absent
+  when: ajgarlag_rollback_version_current is defined

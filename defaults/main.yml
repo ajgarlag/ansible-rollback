@@ -1,0 +1,3 @@
+---
+# Path where the code must be deployed to
+ajgarlag_rollback_path: "{{ ansible_env.HOME }}/project"
