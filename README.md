@@ -6,7 +6,7 @@ Ansible role to rollback applications heavily inspired by [ansistrano](https://g
 Role Variables
 --------------
 
-* **ajgarlag_rollback_path**: Path where the code has been deployed to (defaults to *{{ ansible_env.HOME }}/project*).
+* **ajgarlag_rollback_path**: Path where the code has been deployed to (defaults to `{{ansible_env.HOME}}/project`).
 
 Example Playbook
 ----------------
