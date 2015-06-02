@@ -4,6 +4,9 @@ CHANGELOG
 master
 ------
 
+0.2.0
+-----
+
 * Renamed tasks hook vars: Hook vars prefix was renamed from `ajgarlag_` to
 `ajgarlag_rollback_`.
 
