@@ -1,9 +1,13 @@
 ---
-- name: Symlinking previous release
+- name: Prepare atomic symlink
   file:
     src: "{{ ajgarlag_rollback_version_previous }}"
-    dest: "{{ ajgarlag_rollback_path }}/current"
+    dest: "{{ ajgarlag_rollback_path }}/releases/current"
     state: link
+  when: ajgarlag_rollback_version_previous is defined
+
+- name: Symlinking previous release
+  command: "mv -T {{ ajgarlag_rollback_path }}/releases/current {{ ajgarlag_rollback_path }}/current"
   when: ajgarlag_rollback_version_previous is defined
 
 - debug:
