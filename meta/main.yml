@@ -3,7 +3,7 @@ galaxy_info:
   author: ajgarlag
   description: Ansible role to rollback applications heavily inspired by ansistrano
   license: MIT
-  min_ansible_version: 1.7
+  min_ansible_version: 2.4
   platforms:
   - name: EL
     versions:
